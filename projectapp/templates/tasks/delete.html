@@ -1,0 +1,142 @@
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+    crossorigin="anonymous"
+/>
+<style>
+   /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+text-decoration:none;
+color:black;
+
+
+}
+body{
+   Background-color:black;
+}
+.delete-section{
+   display:flex;
+   flex-direction:coloum;
+   justify-content:center;
+   align-items:center;  
+}
+
+.heading {
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   flex-direction: column;
+   height:400px;
+   width:600px;
+   background-color:#912975c7;
+   text-align:center;
+   border-radius:15px;
+   margin-top:50px;
+   box-shadow:0 0 10px silver;
+}
+.heading h6{
+   font-size:25px;
+   font-weight:bold;
+   font-family:sanserif;
+   margin-bottom:15px;
+   color:#dce918;
+}
+.item{
+   color:white;
+   font-weight:bolder;
+   font-size: x-large;
+   word-break:break-all;
+}
+.button-section{ 
+   display:flex;
+   flex-direction:row;
+   justify-content:center;
+   margin-top:15px;
+   box-shadow:none !important;
+   border:none !important;
+   outline:none !important;
+}
+
+.button-section button{
+   width:100px;
+   height:40px;
+   margin-right:10px;
+   border-radius:10px;  
+}
+.cancel{
+   background-color:#24d918;
+   border:1px solid black;
+}
+.submit{
+   background-color:#eb0b0b;
+   border:1px solid black;
+}
+</style>
+
+<div class='container delete-section'>
+   <div class='heading'>
+
+<div class='wrapper'>
+        <h6>Are sure you want To Delete? </h6>
+        <span class='item'>{{item}}</span>
+     </div>
+ 
+     <div class='btn button-section'>
+        <button class='cancel'><a href='{% url 'list' %}'>Cancel</a></button>
+
+         <form method='POST' action=''>
+          {% csrf_token %} 
+
+          <button class='submit' type="Submit" name='confirm'>Submit</button>
+        </form>
+   </div>
+  </div>
+</div>

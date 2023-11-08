@@ -1,0 +1,128 @@
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+    crossorigin="anonymous"
+/>
+<style>
+  body{
+    background-color: black;
+  }
+  span{
+    color:white;
+  }
+  .header{
+    text-align:center;
+  }
+  input{
+    width:100%;
+    padding:12px 20px;
+    margin:8px auto;
+    box-sizing:border-box;
+    border-radius:5px;
+    color:black;
+    background-color:white;
+    border:none;
+  }
+  .submit{
+    background-color:#0dc70d;
+    width:130px;
+    height:40px;
+  }
+  .center-column{
+    width:600px;
+    margin:20px auto;
+    padding:20px;
+    background-color:black;
+    border-radius:5px;
+    box-shadow:0 0 20px silver;
+    box-sizing:border-box;
+  }
+  .item-row{
+    background-color:#1368b3;
+    margin:10px;
+    padding:20px;
+    border-radius:3px;
+    color:white;
+    font-size:16px;
+    
+  }
+  .head{
+    text-align:center;
+    color:#dce918;
+  }
+  .submision{
+    text-align:center;
+  }
+
+</style>
+
+<div class='center-column'>
+  <div class='head'>
+    <h3>Create Your TODO List</h3>
+  </div>
+
+  <form method="POST" action="/">
+  {% csrf_token %}
+  {{ form.title }}
+  <div class='submision'>
+   <input class='btn btn-info submit' type='submit' name="Create Task">
+  </div>
+</form>
+<div class='todo-list'>
+
+{% for task in tasks %}
+   <div class='item-row'>
+     <a class='btn btn-info' href="{% url 'update_task' task.id %}">Update</a>
+     <a class='btn btn-danger' href="{% url 'Delete' task.id %}">Delete</a>
+     {% if task.completed == True %}
+     <strike>{{ task }}</strike>
+     {% else %}
+     <span>{{ task }}</span>
+     {% endif %}
+   </div>   
+{% endfor %}
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <div class='container fluid task-list'>
+  <div class='container task'>
+    <div class='row'>
+      <div class='col md-12 header'>
+        <h3>Create Your TODO List</h3>
+      </div>
+      <div class='row todo-list'>
+        <div class='col md-12 data-input'>
+          <form method="POST" action="/">
+            {% csrf_token %}
+            {{ form.title }}
+            <button name="Create Task">Submit</button>
+          </form>
+        </div>
+      <div class='row updated-todo'>
+        <div class='col md-12 new-todo'>
+          {% for task in tasks %}
+            <button><a href="{% url 'update_task' task.id %}">Update</a></button>
+            <button><a href="{% url 'Delete' task.id %}">Delete</a></button>
+            {% if task.completed == True %}
+               <strike>{{ task }}</strike>
+            {% else %}
+               <span>{{ task }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+  </div>
+</div> {% endcomment %}
