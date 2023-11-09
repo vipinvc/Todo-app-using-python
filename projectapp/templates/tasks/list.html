@@ -21,7 +21,7 @@
     box-sizing:border-box;
     border-radius:5px;
     color:black;
-    background-color:white;
+    background-color:#c0c3bd;
     border:none;
   }
   .submit{
@@ -64,7 +64,7 @@
 
   <form method="POST" action="/">
   {% csrf_token %}
-  {{ form.title }}
+  {{ form.title}}
   <div class='submision'>
    <input class='btn btn-info submit' type='submit' name="Create Task">
   </div>
